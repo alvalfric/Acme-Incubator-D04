@@ -70,6 +70,7 @@ master.menu.authenticated.tool-record.list = Listar Registros de Herramientas
 master.menu.authenticated.inquirie.list = Listar Investigaciones
 master.menu.authenticated.overture.list = Listar Propuestas
 master.menu.authenticated.challenge.list = Listar Retos
+master.menu.authenticated.investment-round.list = Listar Rondas de Inversión
 
 # master.menu.provider ########################################################
 
@@ -80,6 +81,15 @@ master.menu.provider.favourite-link = Enlace favorito
 
 master.menu.consumer = Consumidor
 master.menu.consumer.favourite-link = Enlace favorito
+
+# master.menu.entrepeneur #####################################################
+
+master.menu.entrepeneur = Empresario
+master.menu.entrepeneur.investment-round.list = Listar Rondas de Inversión
+
+# master.menu.investor ########################################################
+
+master.menu.investor = Inversor
 
 # master.menu.user-account ####################################################
 

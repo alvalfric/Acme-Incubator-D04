@@ -79,7 +79,7 @@
 	<bean id="inquirie01" class ="acme.entities.inquiries.Inquirie">
 		<property name="title" value="Example Inquirie"/>
 		<property name="creation" value="2020/07/09 00:00"/>
-		<property name="deadline" value="2020/07/19 18:00"/>
+		<property name="deadline" value="2020/09/19 18:00"/>
 		<property name="body" value="Requesting assist."/>
 		<property name="minMoney" value="2000 €"/>
 		<property name="maxMoney" value="2000 €"/>
@@ -184,5 +184,201 @@
 		<property name="spamWordsEnglish" value="sex, hard core, viagra, cialis, nigeria, you've won, million dollar"/>
 		<property name="spamWordsSpanish" value="sexo, duro, viagra, cialis, nigeria, has ganado, millón de dólares"/>
 		<property name="spamThreshold" value="2.50"/>
+	</bean>
+	
+	<!-- Entrepeneurs -->
+	<bean name="entrepeneur1UserAccount" class="acme.framework.entities.UserAccount">
+ 		<property name="username" value="entrepeneur1"/>
+ 		<property name="password" value="entrepeneur1"/>
+ 		<property name="enabled" value="true"/>
+ 		<property name="identity">
+ 			<bean class="acme.datatypes.UserIdentity">
+ 				<property name="name" value="Entrepeneur"/>
+ 				<property name="surname" value="1"/>
+ 				<property name="email" value="entrepeneur1@acme.com"/>
+ 			</bean>
+ 		</property>
+ 		<property name="roles">
+ 			<list>
+ 				<ref bean="entrepeneur1Entrepeneur"/>
+ 				<ref bean="entrepeneur1Authenticated"/>
+ 			</list>
+ 		</property>
+ 	</bean>
+ 	
+ 	<bean name="entrepeneur1Entrepeneur" class="acme.entities.roles.Entrepeneur">
+ 		<property name="startUpName" value="Start Up Name"/>
+ 		<property name="activitySector" value="Activity Sector"/>
+ 		<property name="qualification" value="Entrepeneur 1 qualifications"/>
+		<property name="skills" value="Entrepeneur 1 skills"/>
+		<property name="userAccount" ref="entrepeneur1UserAccount"/>
+ 	</bean>
+ 	
+ 	<bean name="entrepeneur1Authenticated" class="acme.framework.entities.Authenticated">
+ 		<property name="userAccount" ref="entrepeneur1UserAccount"/>
+ 	</bean> 
+
+	<bean name="entrepeneur2UserAccount" class="acme.framework.entities.UserAccount">
+ 		<property name="username" value="entrepeneur2"/>
+ 		<property name="password" value="entrepeneur2"/>
+ 		<property name="enabled" value="true"/>
+ 		<property name="identity">
+ 			<bean class="acme.datatypes.UserIdentity">
+ 				<property name="name" value="Acof"/>
+ 				<property name="surname" value="Acof"/>
+ 				<property name="email" value="andres@acofmelt.com"/>
+ 			</bean>
+ 		</property>
+ 		<property name="roles">
+ 			<list>
+ 				<ref bean="entrepeneur2Entrepeneur"/>
+ 				<ref bean="entrepeneur2Authenticated"/>
+ 			</list>
+ 		</property>
+ 	</bean>
+ 	
+ 	<bean name="entrepeneur2Entrepeneur" class="acme.entities.roles.Entrepeneur">
+ 		<property name="startUpName" value="Acoflimpio"/>
+ 		<property name="activitySector" value="Service"/>
+ 		<property name="qualification" value="Entrepeneur 2 qualifications"/>
+		<property name="skills" value="Entrepeneur 2 skills"/>
+		<property name="userAccount" ref="entrepeneur2UserAccount"/>
+ 	</bean>
+ 	
+ 	<bean name="entrepeneur2Authenticated" class="acme.framework.entities.Authenticated">
+ 		<property name="userAccount" ref="entrepeneur2UserAccount"/>
+ 	</bean>
+
+	<bean name="entrepeneur3UserAccount" class="acme.framework.entities.UserAccount">
+ 		<property name="username" value="entrepeneur3"/>
+ 		<property name="password" value="entrepeneur3"/>
+ 		<property name="enabled" value="true"/>
+ 		<property name="identity">
+ 			<bean class="acme.datatypes.UserIdentity">
+ 				<property name="name" value="Lorenzo"/>
+ 				<property name="surname" value="Aliaga"/>
+ 				<property name="email" value="lorenzoaliaga@acme.com"/>
+ 			</bean>
+ 		</property>
+ 		<property name="roles">
+ 			<list>
+ 				<ref bean="entrepeneur3Entrepeneur"/>
+ 				<ref bean="entrepeneur3Authenticated"/>
+ 			</list>
+ 		</property>
+ 	</bean>
+ 	
+ 	<bean name="entrepeneur3Entrepeneur" class="acme.entities.roles.Entrepeneur">
+ 		<property name="startUpName" value="Astiglass"/>
+ 		<property name="activitySector" value="Glass"/>
+ 		<property name="qualification" value="Entrepeneur 3 qualifications"/>
+		<property name="skills" value="Entrepeneur 3 skills"/>
+		<property name="userAccount" ref="entrepeneur3UserAccount"/>
+ 	</bean>
+ 	
+ 	<bean name="entrepeneur3Authenticated" class="acme.framework.entities.Authenticated">
+ 		<property name="userAccount" ref="entrepeneur3UserAccount"/>
+ 	</bean>
+ 	
+	<!-- InvestmentRounds -->
+	<bean id="investment01" class="acme.entities.investmentRounds.InvestmentRound">
+		<property name="ticker" value="ASX-20-000000"/>
+		<property name="creation" value="2020/07/26 00:00"/>
+		<property name="round" value="SEED"/>
+		<property name="title" value="Investment Example 1"/>
+		<property name="description" value="Investment Example 1 description"/>
+		<property name="amount" value="3000 €"/>
+		<property name="link" value=""/>
+		<property name="entrepeneur" ref="entrepeneur1Entrepeneur"/>
+	</bean>
+
+	<bean id="investment02" class="acme.entities.investmentRounds.InvestmentRound">
+		<property name="ticker" value="ASX-20-000001"/>
+		<property name="creation" value="2020/07/26 00:00"/>
+		<property name="round" value="ANGEL"/>
+		<property name="title" value="Investment Example 2"/>
+		<property name="description" value="Investment Example 2 description"/>
+		<property name="amount" value="1000 €"/>
+		<property name="link" value="https://es.investing.com/"/>
+		<property name="entrepeneur" ref="entrepeneur1Entrepeneur"/>
+	</bean>
+
+	<bean id="investment03" class="acme.entities.investmentRounds.InvestmentRound">
+		<property name="ticker" value="SXX-20-000000"/>
+		<property name="creation" value="2020/07/27 00:00"/>
+		<property name="round" value="SERIES-A"/>
+		<property name="title" value="House cleaning"/>
+		<property name="description" value="Investment Example 3 description"/>
+		<property name="amount" value="2 €"/>
+		<property name="link" value=""/>
+		<property name="entrepeneur" ref="entrepeneur2Entrepeneur"/>
+	</bean>
+	
+	<bean id="investment04" class="acme.entities.investmentRounds.InvestmentRound">
+		<property name="ticker" value="GXX-20-000000"/>
+		<property name="creation" value="2020/07/27 00:00"/>
+		<property name="round" value="BRIDGE"/>
+		<property name="title" value="Astiglass investment"/>
+		<property name="description" value="Investment Example 4 description"/>
+		<property name="amount" value="8000 €"/>
+		<property name="link" value="http://localhost:8080/acme-incubator/"/>
+		<property name="entrepeneur" ref="entrepeneur3Entrepeneur"/>
+	</bean>
+
+	<!-- Activities -->
+	<bean id="activity01" class="acme.entities.investmentRounds.Activity">
+		<property name="title" value="Activity 1 Example"/>
+		<property name="creation" value="2020/07/26 00:00"/>
+		<property name="deadline" value="2020/10/01 00:00"/>
+		<property name="money" value="200 €"/>
+		<property name="investmentRound" ref="investment01"/>
+	</bean>
+
+	<bean id="activity02" class="acme.entities.investmentRounds.Activity">
+		<property name="title" value="Activity 2 Example"/>
+		<property name="creation" value="2020/07/26 00:00"/>
+		<property name="deadline" value="2020/10/01 00:00"/>
+		<property name="money" value="950 €"/>
+		<property name="investmentRound" ref="investment01"/>
+	</bean>
+
+	<bean id="activity03" class="acme.entities.investmentRounds.Activity">
+		<property name="title" value="Activity 3 Example"/>
+		<property name="creation" value="2020/07/26 00:00"/>
+		<property name="deadline" value="2020/10/01 00:00"/>
+		<property name="money" value="1850 €"/>
+		<property name="investmentRound" ref="investment01"/>
+	</bean>
+	
+	<bean id="activity04" class="acme.entities.investmentRounds.Activity">
+		<property name="title" value="Activity 4 Example"/>
+		<property name="creation" value="2020/07/26 00:00"/>
+		<property name="deadline" value="2020/10/01 00:00"/>
+		<property name="money" value="1000 €"/>
+		<property name="investmentRound" ref="investment02"/>
+	</bean>
+
+	<bean id="activity05" class="acme.entities.investmentRounds.Activity">
+		<property name="title" value="House cleaning 1"/>
+		<property name="creation" value="2020/07/27 00:00"/>
+		<property name="deadline" value="2020/10/01 00:00"/>
+		<property name="money" value="2 €"/>
+		<property name="investmentRound" ref="investment03"/>
+	</bean>
+
+	<bean id="activity06" class="acme.entities.investmentRounds.Activity">
+		<property name="title" value="Workbook"/>
+		<property name="creation" value="2020/07/27 00:00"/>
+		<property name="deadline" value="2020/10/01 00:00"/>
+		<property name="money" value="3000 €"/>
+		<property name="investmentRound" ref="investment04"/>
+	</bean>
+	
+	<bean id="activity07" class="acme.entities.investmentRounds.Activity">
+		<property name="title" value="Student Book"/>
+		<property name="creation" value="2020/07/27 00:00"/>
+		<property name="deadline" value="2020/10/10 00:00"/>
+		<property name="money" value="5000 €"/>
+		<property name="investmentRound" ref="investment04"/>
 	</bean>
 </beans>

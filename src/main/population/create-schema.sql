@@ -1,4 +1,16 @@
 
+    create table `activity` (
+       `id` integer not null,
+        `version` integer not null,
+        `creation` datetime(6),
+        `deadline` datetime(6),
+        `money_amount` double precision,
+        `money_currency` varchar(255),
+        `title` varchar(255),
+        `investment_round_id` integer not null,
+        primary key (`id`)
+    ) engine=InnoDB;
+
     create table `administrator` (
        `id` integer not null,
         `version` integer not null,
@@ -20,6 +32,19 @@
        `id` integer not null,
         `version` integer not null,
         `user_account_id` integer,
+        primary key (`id`)
+    ) engine=InnoDB;
+
+    create table `application` (
+       `id` integer not null,
+        `version` integer not null,
+        `creation` datetime(6),
+        `offer_amount` double precision,
+        `offer_currency` varchar(255),
+        `statement` varchar(255),
+        `ticker` varchar(255),
+        `investment_round_id` integer not null,
+        `investor_id` integer not null,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -63,6 +88,17 @@
         primary key (`id`)
     ) engine=InnoDB;
 
+    create table `entrepeneur` (
+       `id` integer not null,
+        `version` integer not null,
+        `user_account_id` integer,
+        `activity_sector` varchar(255),
+        `qualification` varchar(255),
+        `skills` varchar(255),
+        `start_up_name` varchar(255),
+        primary key (`id`)
+    ) engine=InnoDB;
+
     create table `inquirie` (
        `id` integer not null,
         `version` integer not null,
@@ -75,6 +111,31 @@
         `min_money_amount` double precision,
         `min_money_currency` varchar(255),
         `title` varchar(255),
+        primary key (`id`)
+    ) engine=InnoDB;
+
+    create table `investment_round` (
+       `id` integer not null,
+        `version` integer not null,
+        `amount_amount` double precision,
+        `amount_currency` varchar(255),
+        `creation` datetime(6),
+        `description` varchar(255),
+        `link` varchar(255),
+        `round` varchar(255),
+        `ticker` varchar(255),
+        `title` varchar(255),
+        `entrepeneur_id` integer not null,
+        primary key (`id`)
+    ) engine=InnoDB;
+
+    create table `investor` (
+       `id` integer not null,
+        `version` integer not null,
+        `user_account_id` integer,
+        `activity_sector` varchar(255),
+        `firm_name` varchar(255),
+        `profile` varchar(255),
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -169,9 +230,18 @@
     ) engine=InnoDB;
 
     insert into `hibernate_sequence` values ( 1 );
+create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
+create index IDXdvftjmbbmrad2oe19yi4uuhyi on `inquirie` (`deadline`);
+create index IDXrcpel5hblr62lfjr9gmpk2wgi on `notice` (`deadline`);
+create index IDX3ianip0mmnj1316lpeas2yw71 on `overture` (`deadline`);
 
     alter table `user_account` 
        add constraint UK_castjbvpeeus0r8lbpehiu0e4 unique (`username`);
+
+    alter table `activity` 
+       add constraint `FK1ufotopeofii4jlefyk9c7os5` 
+       foreign key (`investment_round_id`) 
+       references `investment_round` (`id`);
 
     alter table `administrator` 
        add constraint FK_2a5vcjo3stlfcwadosjfq49l1 
@@ -183,6 +253,16 @@
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
 
+    alter table `application` 
+       add constraint `FKk5ibe41quxsif8im882xv4afo` 
+       foreign key (`investment_round_id`) 
+       references `investment_round` (`id`);
+
+    alter table `application` 
+       add constraint `FKl4fp0cd8c008ma79n6w58xhk9` 
+       foreign key (`investor_id`) 
+       references `investor` (`id`);
+
     alter table `authenticated` 
        add constraint FK_h52w0f3wjoi68b63wv9vwon57 
        foreign key (`user_account_id`) 
@@ -190,6 +270,21 @@
 
     alter table `consumer` 
        add constraint FK_6cyha9f1wpj0dpbxrrjddrqed 
+       foreign key (`user_account_id`) 
+       references `user_account` (`id`);
+
+    alter table `entrepeneur` 
+       add constraint FK_pwrtga2lkxnda15j1bgh7lbaw 
+       foreign key (`user_account_id`) 
+       references `user_account` (`id`);
+
+    alter table `investment_round` 
+       add constraint `FKnvwsfdvabjoap6i9cy2mwgcqg` 
+       foreign key (`entrepeneur_id`) 
+       references `entrepeneur` (`id`);
+
+    alter table `investor` 
+       add constraint FK_dcek5rr514s3rww0yy57vvnpq 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
 
