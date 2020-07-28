@@ -59,9 +59,19 @@
 			<acme:menu-suboption code="master.menu.authenticated.tool-record.list" action="/authenticated/tool-record/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.inquirie.list" action="/authenticated/inquirie/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.overture.list" action="/authenticated/overture/list"/>		
-			<acme:menu-suboption code="master.menu.authenticated.challenge.list" action="/authenticated/challenge/list"/>				
+			<acme:menu-suboption code="master.menu.authenticated.challenge.list" action="/authenticated/challenge/list"/>
+		    <acme:menu-suboption code="master.menu.authenticated.investment-round.list" action="/authenticated/investment-round/list"/>
 		</acme:menu-option>
-
+		
+		<acme:menu-option code="master.menu.entrepeneur" access="hasRole('Entrepeneur')">
+		    <acme:menu-suboption code="master.menu.entrepeneur.investment-round.list" action="/entrepeneur/investment-round/list"/>
+		    <acme:menu-suboption code="master.menu.entrepeneur.application.list" action="/entrepeneur/application/list"/>
+		</acme:menu-option>
+	
+		<acme:menu-option code="master.menu.investor" access="hasRole('Investor')">
+		    <acme:menu-suboption code="master.menu.investor.application.list" action="/investor/application/list"/>
+		</acme:menu-option>
+		
 		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">
 			<acme:menu-suboption code="master.menu.provider.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
