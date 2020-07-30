@@ -1,4 +1,16 @@
 
+    create table `accounting_record` (
+       `id` integer not null,
+        `version` integer not null,
+        `body` varchar(255),
+        `creation` datetime(6),
+        `status` varchar(255),
+        `title` varchar(255),
+        `bookkeeper_id` integer not null,
+        `investment_round_id` integer not null,
+        primary key (`id`)
+    ) engine=InnoDB;
+
     create table `activity` (
        `id` integer not null,
         `version` integer not null,
@@ -55,6 +67,15 @@
         primary key (`id`)
     ) engine=InnoDB;
 
+    create table `bookkeeper` (
+       `id` integer not null,
+        `version` integer not null,
+        `user_account_id` integer,
+        `firm_name` varchar(255),
+        `responsability_statement` varchar(255),
+        primary key (`id`)
+    ) engine=InnoDB;
+
     create table `challenge` (
        `id` integer not null,
         `version` integer not null,
@@ -96,6 +117,19 @@
         `qualification` varchar(255),
         `skills` varchar(255),
         `start_up_name` varchar(255),
+        primary key (`id`)
+    ) engine=InnoDB;
+
+    create table `forum_message` (
+       `id` integer not null,
+        `version` integer not null,
+        `body` varchar(255),
+        `creation` datetime(6),
+        `forum` varchar(255),
+        `tags` varchar(255),
+        `title` varchar(255),
+        `authenticated_id` integer not null,
+        `investment_round_id` integer not null,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -231,12 +265,25 @@
 
     insert into `hibernate_sequence` values ( 1 );
 create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
+
+    alter table `forum_message` 
+       add constraint UK_1o8wmeqdyyx607835g3wg2xoo unique (`authenticated_id`);
 create index IDXdvftjmbbmrad2oe19yi4uuhyi on `inquirie` (`deadline`);
 create index IDXrcpel5hblr62lfjr9gmpk2wgi on `notice` (`deadline`);
 create index IDX3ianip0mmnj1316lpeas2yw71 on `overture` (`deadline`);
 
     alter table `user_account` 
        add constraint UK_castjbvpeeus0r8lbpehiu0e4 unique (`username`);
+
+    alter table `accounting_record` 
+       add constraint `FK41jm4vk7runvmg5tderffrele` 
+       foreign key (`bookkeeper_id`) 
+       references `bookkeeper` (`id`);
+
+    alter table `accounting_record` 
+       add constraint `FKk1pmfnppwk0kav7xloy8u71uq` 
+       foreign key (`investment_round_id`) 
+       references `investment_round` (`id`);
 
     alter table `activity` 
        add constraint `FK1ufotopeofii4jlefyk9c7os5` 
@@ -268,6 +315,11 @@ create index IDX3ianip0mmnj1316lpeas2yw71 on `overture` (`deadline`);
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
 
+    alter table `bookkeeper` 
+       add constraint FK_krvjp9eaqyapewl2igugbo9o8 
+       foreign key (`user_account_id`) 
+       references `user_account` (`id`);
+
     alter table `consumer` 
        add constraint FK_6cyha9f1wpj0dpbxrrjddrqed 
        foreign key (`user_account_id`) 
@@ -277,6 +329,16 @@ create index IDX3ianip0mmnj1316lpeas2yw71 on `overture` (`deadline`);
        add constraint FK_pwrtga2lkxnda15j1bgh7lbaw 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
+
+    alter table `forum_message` 
+       add constraint `FK3f2elg5avd9gspj39hg87jc7q` 
+       foreign key (`authenticated_id`) 
+       references `authenticated` (`id`);
+
+    alter table `forum_message` 
+       add constraint `FKddtqjt03whpxf0eydeeb1emh4` 
+       foreign key (`investment_round_id`) 
+       references `investment_round` (`id`);
 
     alter table `investment_round` 
        add constraint `FKnvwsfdvabjoap6i9cy2mwgcqg` 

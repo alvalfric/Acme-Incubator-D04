@@ -50,5 +50,7 @@ tr:nth-child(even) {
 	</table>
 	<br>
 
+	<input type="button" class="btn btn-default" onclick="location.href='/acme-incubator/authenticated/accounting-record/list?investmentRoundId=${id}'" 
+		value="<acme:message code="authenticated.investment-round.form.button.accounting-record"/>">
 	<acme:form-return code="authenticated.investment-round.form.button.return"/>
 </acme:form>
