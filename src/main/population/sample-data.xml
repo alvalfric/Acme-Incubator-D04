@@ -177,15 +177,7 @@
 		<property name="expertGoal" value="We achive platinum IV level"/>
 		<property name="expertReward" value="1000 RP"/>
 	</bean>
-	
-	<!-- CustomizationParameters -->
-	<bean id="spamwords" class="acme.entities.customizationParameters.CustomizationParameter">
-		<property name="id" value="1"/>
-		<property name="spamWordsEnglish" value="sex, hard core, viagra, cialis, nigeria, you've won, million dollar"/>
-		<property name="spamWordsSpanish" value="sexo, duro, viagra, cialis, nigeria, has ganado, millón de dólares"/>
-		<property name="spamThreshold" value="2.50"/>
-	</bean>
-	
+		
 	<!-- Entrepeneurs -->
 	<bean name="entrepeneur1UserAccount" class="acme.framework.entities.UserAccount">
  		<property name="username" value="entrepeneur1"/>
@@ -422,4 +414,91 @@
 		<property name="investmentRound" ref="investment01"/>
 		<property name="investor" ref="investor1Investor"/>
 	</bean>
+	
+	<!-- Bookkeepers -->
+	<bean name="bookkeepers1UserAccount" class="acme.framework.entities.UserAccount">
+ 		<property name="username" value="bookkeeper1"/>
+ 		<property name="password" value="bookkeeper1"/>
+ 		<property name="enabled" value="true"/>
+ 		<property name="identity">
+ 			<bean class="acme.datatypes.UserIdentity">
+ 				<property name="name" value="Bookkeeper"/>
+ 				<property name="surname" value="1"/>
+ 				<property name="email" value="bookkeeper1@acme.com"/>
+ 			</bean>
+ 		</property>
+ 		<property name="roles">
+ 			<list>
+ 				<ref bean="bookkeeper1Bookkeeper"/>
+ 				<ref bean="bookkeeper1Authenticated"/>
+ 			</list>
+ 		</property>
+ 	</bean>
+ 	
+ 	<bean name="bookkeeper1Bookkeeper" class="acme.entities.roles.Bookkeeper">
+ 		<property name="firmName" value="Firm Name"/>
+ 		<property name="responsabilityStatement" value="Responsability Statement"/>
+ 		<property name="userAccount" ref="bookkeepers1UserAccount"/>
+ 	</bean>
+ 	
+ 	<bean name="bookkeeper1Authenticated" class="acme.framework.entities.Authenticated">
+ 		<property name="userAccount" ref="bookkeepers1UserAccount"/>
+ 	</bean>
+ 	
+ 	<bean name="bookkeepers2UserAccount" class="acme.framework.entities.UserAccount">
+ 		<property name="username" value="bookkeeper2"/>
+ 		<property name="password" value="bookkeeper2"/>
+ 		<property name="enabled" value="true"/>
+ 		<property name="identity">
+ 			<bean class="acme.datatypes.UserIdentity">
+ 				<property name="name" value="Bookkeeper"/>
+ 				<property name="surname" value="2"/>
+ 				<property name="email" value="bookkeeper2@acme.com"/>
+ 			</bean>
+ 		</property>
+ 		<property name="roles">
+ 			<list>
+ 				<ref bean="bookkeeper2Bookkeeper"/>
+ 				<ref bean="bookkeeper2Authenticated"/>
+ 			</list>
+ 		</property>
+ 	</bean>
+ 	
+ 	<bean name="bookkeeper2Bookkeeper" class="acme.entities.roles.Bookkeeper">
+ 		<property name="firmName" value="Firm Name 2"/>
+ 		<property name="responsabilityStatement" value="Responsability Statement 2"/>
+  		<property name="userAccount" ref="bookkeepers2UserAccount"/>
+ 	</bean>
+ 	
+ 	<bean name="bookkeeper2Authenticated" class="acme.framework.entities.Authenticated">
+ 		<property name="userAccount" ref="bookkeepers2UserAccount"/>
+ 	</bean>
+ 	
+ 	<!-- AccountingRecords -->
+	<bean id="accountingRecord01" class="acme.entities.accountingRecords.AccountingRecord">
+ 		<property name="title" value="Accounting Record Title 1"/>
+ 		<property name="status" value="published"/>
+		<property name="creation" value="2020/07/28 00:00"/>
+ 		<property name="body" value="Accounting Record Body"/>
+ 		<property name="investmentRound" ref="investment01"/>
+ 		<property name="bookkeeper" ref="bookkeeper1Bookkeeper"/>
+ 	</bean>
+ 	
+ 	<bean id="accountingRecord02" class="acme.entities.accountingRecords.AccountingRecord">
+ 		<property name="title" value="Accounting Record Title 2"/>
+ 		<property name="status" value="published"/>
+		<property name="creation" value="2020/07/28 00:00"/>
+ 		<property name="body" value="Accounting Record Body"/>
+ 		<property name="investmentRound" ref="investment01"/>
+ 		<property name="bookkeeper" ref="bookkeeper2Bookkeeper"/>
+ 	</bean>
+ 	
+ 	<bean id="accountingRecord03" class="acme.entities.accountingRecords.AccountingRecord">
+ 		<property name="title" value="Accounting Record Title 3"/>
+ 		<property name="status" value="draft"/>
+		<property name="creation" value="2020/07/28 00:00"/>
+ 		<property name="body" value="Accounting Record Body"/>
+ 		<property name="investmentRound" ref="investment02"/>
+ 		<property name="bookkeeper" ref="bookkeeper1Bookkeeper"/>
+ 	</bean>
 </beans>

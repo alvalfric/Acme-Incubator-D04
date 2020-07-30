@@ -31,7 +31,7 @@ tr:nth-child(even) {
 	</jstl:if>
 
 	<b><acme:message code="entrepeneur.investment-round.form.label.workProgramme"/></b>
-	</br>
+	<br>
 	<table>
 		<tr>
 			<th><acme:message code="entrepeneur.investment-round.form.label.workProgramme.title"/></th>
@@ -50,5 +50,7 @@ tr:nth-child(even) {
 	</table>
 	<br>
 
+	<input type="button" class="btn btn-default" onclick="location.href='/acme-incubator/entrepeneur/accounting-record/list-mine?investmentRoundId=${id}'" 
+		value="<acme:message code="entrepeneur.investment-round.form.button.accounting-record"/>">
 	<acme:form-return code="entrepeneur.investment-round.form.button.return"/>
 </acme:form>

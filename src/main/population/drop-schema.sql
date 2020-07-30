@@ -1,4 +1,12 @@
 
+    alter table `accounting_record` 
+       drop 
+       foreign key `FK41jm4vk7runvmg5tderffrele`;
+
+    alter table `accounting_record` 
+       drop 
+       foreign key `FKk1pmfnppwk0kav7xloy8u71uq`;
+
     alter table `activity` 
        drop 
        foreign key `FK1ufotopeofii4jlefyk9c7os5`;
@@ -23,6 +31,10 @@
        drop 
        foreign key FK_h52w0f3wjoi68b63wv9vwon57;
 
+    alter table `bookkeeper` 
+       drop 
+       foreign key FK_krvjp9eaqyapewl2igugbo9o8;
+
     alter table `consumer` 
        drop 
        foreign key FK_6cyha9f1wpj0dpbxrrjddrqed;
@@ -30,6 +42,14 @@
     alter table `entrepeneur` 
        drop 
        foreign key FK_pwrtga2lkxnda15j1bgh7lbaw;
+
+    alter table `forum_message` 
+       drop 
+       foreign key `FK3f2elg5avd9gspj39hg87jc7q`;
+
+    alter table `forum_message` 
+       drop 
+       foreign key `FKddtqjt03whpxf0eydeeb1emh4`;
 
     alter table `investment_round` 
        drop 
@@ -43,6 +63,8 @@
        drop 
        foreign key FK_b1gwnjqm6ggy9yuiqm0o4rlmd;
 
+    drop table if exists `accounting_record`;
+
     drop table if exists `activity`;
 
     drop table if exists `administrator`;
@@ -55,6 +77,8 @@
 
     drop table if exists `authenticated`;
 
+    drop table if exists `bookkeeper`;
+
     drop table if exists `challenge`;
 
     drop table if exists `consumer`;
@@ -62,6 +86,8 @@
     drop table if exists `customization_parameter`;
 
     drop table if exists `entrepeneur`;
+
+    drop table if exists `forum_message`;
 
     drop table if exists `inquirie`;
 
