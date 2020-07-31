@@ -411,6 +411,7 @@
 		<property name="creation" value="2020/07/27 00:00"/>
 		<property name="statement" value="Example statement"/>
 		<property name="offer" value="3000 €"/>
+		<property name="status" value="accepted"/>
 		<property name="investmentRound" ref="investment01"/>
 		<property name="investor" ref="investor1Investor"/>
 	</bean>
@@ -501,4 +502,35 @@
  		<property name="investmentRound" ref="investment02"/>
  		<property name="bookkeeper" ref="bookkeeper1Bookkeeper"/>
  	</bean>
+ 	
+ 	<!-- Forums -->
+ 	<bean id="forum01" class="acme.entities.forums.Forum">
+ 		<property name="forumTitle" value="Forum of Investment 1"/>
+ 		<property name="users">
+ 			<list>
+ 				<ref bean="entrepeneur1Authenticated"/>
+ 				<ref bean="investor1Authenticated"/>
+ 			</list>
+ 		</property>
+ 		<property name="investmentRound" ref="investment01"/>
+ 	</bean>
+ 	
+ 	<!-- ForumMessages -->
+	<bean id="message01" class="acme.entities.forums.ForumMessage">
+	 	<property name="title" value="Message title 1"/>
+		<property name="creation" value="2020/07/30 00:00"/>
+	 	<property name="tags" value="message, forum, test"/>
+	 	<property name="body" value="Body message 1"/>
+	 	<property name="forum" ref="forum01"/>
+	 	<property name="user" ref="entrepeneur1Authenticated"/>
+	</bean>
+	
+	<bean id="message02" class="acme.entities.forums.ForumMessage">
+	 	<property name="title" value="Message title 2"/>
+		<property name="creation" value="2020/07/30 00:00"/>
+	 	<property name="tags" value="example 2"/>
+	 	<property name="body" value="Body message 2"/>
+	 	<property name="forum" ref="forum01"/>
+	 	<property name="user" ref="investor1Authenticated"/>
+	</bean>
 </beans>

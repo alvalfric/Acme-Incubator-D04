@@ -16,4 +16,5 @@ bookkeeper.investment-round.list.label.title = Título
 bookkeeper.investment-round.list.label.round = Ronda de inversión
 bookkeeper.investment-round.list.label.creation = Creación
 
+bookkeeper.investment-round.form.button.accounting-record = Registros de Contabilidad
 bookkeeper.investment-round.form.button.return = Volver

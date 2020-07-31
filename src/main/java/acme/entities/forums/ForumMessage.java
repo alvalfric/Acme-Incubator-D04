@@ -1,5 +1,5 @@
 
-package acme.entities.investmentRounds;
+package acme.entities.forums;
 
 import java.util.Date;
 
@@ -9,6 +9,7 @@ import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 
 import acme.framework.entities.Authenticated;
 import acme.framework.entities.DomainEntity;
@@ -23,12 +24,10 @@ public class ForumMessage extends DomainEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@NotBlank
-	private String				forum;
-
-	@NotBlank
 	private String				title;
 
 	@NotNull
+	@PastOrPresent
 	private Date				creation;
 
 	private String				tags;
@@ -39,10 +38,10 @@ public class ForumMessage extends DomainEntity {
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	private InvestmentRound		investmentRound;
+	private Forum				forum;
 
 	@NotNull
 	@Valid
 	@OneToOne(optional = false)
-	private Authenticated		authenticated;
+	private Authenticated		user;
 }

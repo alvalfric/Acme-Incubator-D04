@@ -61,6 +61,7 @@
 			<acme:menu-suboption code="master.menu.authenticated.overture.list" action="/authenticated/overture/list"/>		
 			<acme:menu-suboption code="master.menu.authenticated.challenge.list" action="/authenticated/challenge/list"/>
 		    <acme:menu-suboption code="master.menu.authenticated.investment-round.list" action="/authenticated/investment-round/list"/>
+		    <acme:menu-suboption code="master.menu.authenticated.forum.list" action="/authenticated/forum/list"/>
 		</acme:menu-option>
 				
 		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">

@@ -16,4 +16,5 @@ authenticated.investment-round.list.label.title = Title
 authenticated.investment-round.list.label.round = Investment round
 authenticated.investment-round.list.label.creation = Creation
 
+authenticated.investment-round.form.button.accounting-record = Accounting Records
 authenticated.investment-round.form.button.return = Return
