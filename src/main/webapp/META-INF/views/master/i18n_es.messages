@@ -71,6 +71,7 @@ master.menu.authenticated.inquirie.list = Listar Investigaciones
 master.menu.authenticated.overture.list = Listar Propuestas
 master.menu.authenticated.challenge.list = Listar Retos
 master.menu.authenticated.investment-round.list = Listar Rondas de Inversión
+master.menu.authenticated.forum.list = Listar Foros
 
 # master.menu.provider ########################################################
 
@@ -92,6 +93,12 @@ master.menu.entrepeneur.application.list = Listar solucitudes de Rondas de Inver
 
 master.menu.investor = Inversor
 master.menu.investor.application.list = Listar solicitudes
+
+# master.menu.bookkeeper ########################################################
+
+master.menu.bookkeeper = Contable
+master.menu.bookkeeper.investment-round.list.written = Listar Rondas de Inversión Con Registro Contable
+master.menu.bookkeeper.investment-round.list.not-written = Listar Rondas de Inversión Sin Registro Contable
 
 # master.menu.user-account ####################################################
 

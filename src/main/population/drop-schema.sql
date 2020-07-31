@@ -43,13 +43,25 @@
        drop 
        foreign key FK_pwrtga2lkxnda15j1bgh7lbaw;
 
-    alter table `forum_message` 
+    alter table `forum` 
        drop 
-       foreign key `FK3f2elg5avd9gspj39hg87jc7q`;
+       foreign key `FKq8ggcjgl5by5gf6l5bji632hu`;
 
     alter table `forum_message` 
        drop 
-       foreign key `FKddtqjt03whpxf0eydeeb1emh4`;
+       foreign key `FKsrtj8k65l4o01scnduc07muo5`;
+
+    alter table `forum_message` 
+       drop 
+       foreign key `FK4e18daruc8avd3tt0w2hk3ybl`;
+
+    alter table `forum_authenticated` 
+       drop 
+       foreign key `FKbfu7rkr4imldqrkswlqieb4dv`;
+
+    alter table `forum_authenticated` 
+       drop 
+       foreign key `FKd1ebx6x0cql1bxphvu15qxh2x`;
 
     alter table `investment_round` 
        drop 
@@ -87,7 +99,11 @@
 
     drop table if exists `entrepeneur`;
 
+    drop table if exists `forum`;
+
     drop table if exists `forum_message`;
+
+    drop table if exists `forum_authenticated`;
 
     drop table if exists `inquirie`;
 

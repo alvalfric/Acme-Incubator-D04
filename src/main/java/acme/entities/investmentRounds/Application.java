@@ -39,6 +39,9 @@ public class Application extends DomainEntity {
 	private Money				offer;
 
 	@NotNull
+	private String				status;
+
+	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
 	private InvestmentRound		investmentRound;

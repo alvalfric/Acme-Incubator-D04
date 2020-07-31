@@ -54,6 +54,7 @@
         `offer_amount` double precision,
         `offer_currency` varchar(255),
         `statement` varchar(255),
+        `status` varchar(255),
         `ticker` varchar(255),
         `investment_round_id` integer not null,
         `investor_id` integer not null,
@@ -120,17 +121,29 @@
         primary key (`id`)
     ) engine=InnoDB;
 
+    create table `forum` (
+       `id` integer not null,
+        `version` integer not null,
+        `forum_title` varchar(255),
+        `investment_round_id` integer not null,
+        primary key (`id`)
+    ) engine=InnoDB;
+
     create table `forum_message` (
        `id` integer not null,
         `version` integer not null,
         `body` varchar(255),
         `creation` datetime(6),
-        `forum` varchar(255),
         `tags` varchar(255),
         `title` varchar(255),
-        `authenticated_id` integer not null,
-        `investment_round_id` integer not null,
+        `forum_id` integer not null,
+        `user_id` integer not null,
         primary key (`id`)
+    ) engine=InnoDB;
+
+    create table `forum_authenticated` (
+       `forum_id` integer not null,
+        `users_id` integer not null
     ) engine=InnoDB;
 
     create table `inquirie` (
@@ -266,8 +279,14 @@
     insert into `hibernate_sequence` values ( 1 );
 create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
 
+    alter table `forum` 
+       add constraint UK_ofnp3l952r0ymjahya6fuy1xq unique (`investment_round_id`);
+
     alter table `forum_message` 
-       add constraint UK_1o8wmeqdyyx607835g3wg2xoo unique (`authenticated_id`);
+       add constraint UK_byxkuonx9sv7tgfm9gpwqpfl3 unique (`user_id`);
+
+    alter table `forum_authenticated` 
+       add constraint UK_k6ndg4ome2baofqo7cwvnkyln unique (`users_id`);
 create index IDXdvftjmbbmrad2oe19yi4uuhyi on `inquirie` (`deadline`);
 create index IDXrcpel5hblr62lfjr9gmpk2wgi on `notice` (`deadline`);
 create index IDX3ianip0mmnj1316lpeas2yw71 on `overture` (`deadline`);
@@ -330,15 +349,30 @@ create index IDX3ianip0mmnj1316lpeas2yw71 on `overture` (`deadline`);
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
 
-    alter table `forum_message` 
-       add constraint `FK3f2elg5avd9gspj39hg87jc7q` 
-       foreign key (`authenticated_id`) 
-       references `authenticated` (`id`);
-
-    alter table `forum_message` 
-       add constraint `FKddtqjt03whpxf0eydeeb1emh4` 
+    alter table `forum` 
+       add constraint `FKq8ggcjgl5by5gf6l5bji632hu` 
        foreign key (`investment_round_id`) 
        references `investment_round` (`id`);
+
+    alter table `forum_message` 
+       add constraint `FKsrtj8k65l4o01scnduc07muo5` 
+       foreign key (`forum_id`) 
+       references `forum` (`id`);
+
+    alter table `forum_message` 
+       add constraint `FK4e18daruc8avd3tt0w2hk3ybl` 
+       foreign key (`user_id`) 
+       references `authenticated` (`id`);
+
+    alter table `forum_authenticated` 
+       add constraint `FKbfu7rkr4imldqrkswlqieb4dv` 
+       foreign key (`users_id`) 
+       references `authenticated` (`id`);
+
+    alter table `forum_authenticated` 
+       add constraint `FKd1ebx6x0cql1bxphvu15qxh2x` 
+       foreign key (`forum_id`) 
+       references `forum` (`id`);
 
     alter table `investment_round` 
        add constraint `FKnvwsfdvabjoap6i9cy2mwgcqg` 

@@ -71,6 +71,7 @@ master.menu.authenticated.inquirie.list = List Inquiries
 master.menu.authenticated.overture.list = List Overtures
 master.menu.authenticated.challenge.list = List Challenges
 master.menu.authenticated.investment-round.list = List Investment Rounds
+master.menu.authenticated.forum.list = List Forums
 
 # master.menu.provider ########################################################
 
@@ -92,6 +93,12 @@ master.menu.entrepeneur.application.list = List Investment Rounds' Applications
 
 master.menu.investor = Investor
 master.menu.investor.application.list = List Applications
+
+# master.menu.bookkeeper ########################################################
+
+master.menu.bookkeeper = Bookkeeper
+master.menu.bookkeeper.investment-round.list.written = List Investment Rounds With Account Record
+master.menu.bookkeeper.investment-round.list.not-written = List Investment Rounds Without Account Record
 
 # master.menu.user-account ####################################################
 
