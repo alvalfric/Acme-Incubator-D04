@@ -15,6 +15,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.URL;
+
 import acme.entities.accountingRecords.AccountingRecord;
 import acme.entities.forums.Forum;
 import acme.entities.roles.Entrepeneur;
@@ -51,6 +53,7 @@ public class InvestmentRound extends DomainEntity {
 	@NotNull
 	private Money								amount;
 
+	@URL
 	private String								link;
 
 	//@NotNull
