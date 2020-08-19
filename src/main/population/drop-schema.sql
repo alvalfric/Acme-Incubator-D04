@@ -89,6 +89,8 @@
 
     drop table if exists `authenticated`;
 
+    drop table if exists `banner`;
+
     drop table if exists `bookkeeper`;
 
     drop table if exists `challenge`;
