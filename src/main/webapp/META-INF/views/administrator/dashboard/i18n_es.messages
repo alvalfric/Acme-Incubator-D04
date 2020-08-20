@@ -10,5 +10,7 @@ administrator.dashboard.label.maximunMoneyIntervalsOfActiveOvertures = Máximo i
 administrator.dashboard.label.averageMoneyIntervalsOfActiveOvertures = Intervalo promedio de dinero de Propuestas Activas
 administrator.dashboard.label.standardDeviationMoneyIntervalsOfActiveOvertures = Desviación Estandar de dinero de Propuestas Activas
 administrator.dashboard.chart.label.technologyTool = Gráfico de Registros Tecnológicos y de Herramientas por Sector
+administrator.dashboard.chart.label.chartInvestment = Gráfico de Rondas de Inversión por Sector
+administrator.dashboard.chart.label.chartApplication = Gráfico de Aplicaciones por Estado
 
 administrator.dashboard.form.button.return = Volver
