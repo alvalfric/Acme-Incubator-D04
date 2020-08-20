@@ -10,5 +10,7 @@ administrator.dashboard.label.maximunMoneyIntervalsOfActiveOvertures = Maximun m
 administrator.dashboard.label.averageMoneyIntervalsOfActiveOvertures = Average money interval of Actives Overtures
 administrator.dashboard.label.standardDeviationMoneyIntervalsOfActiveOvertures = Standard Deviation of money interval of Actives Overtures
 administrator.dashboard.chart.label.technologyTool = Chart of Technology and Tool Records by Sector
+administrator.dashboard.chart.label.chartInvestment = Chart of Investment Rounds per Sector
+administrator.dashboard.chart.label.chartApplication = Chart of Applications per Status
 
 administrator.dashboard.form.button.return = Return

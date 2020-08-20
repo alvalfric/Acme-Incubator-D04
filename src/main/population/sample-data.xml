@@ -296,7 +296,7 @@
 	<bean id="investment01" class="acme.entities.investmentRounds.InvestmentRound">
 		<property name="ticker" value="ASX-20-000000"/>
 		<property name="creation" value="2020/07/26 00:00"/>
-		<property name="round" value="SEED"/>
+		<property name="round" value="ANGEL"/>
 		<property name="title" value="Investment Example 1"/>
 		<property name="description" value="Investment Example 1 description"/>
 		<property name="amount" value="3000 €"/>
@@ -318,7 +318,7 @@
 	<bean id="investment03" class="acme.entities.investmentRounds.InvestmentRound">
 		<property name="ticker" value="SXX-20-000000"/>
 		<property name="creation" value="2020/07/27 00:00"/>
-		<property name="round" value="SERIES-A"/>
+		<property name="round" value="SERIES-B"/>
 		<property name="title" value="House cleaning"/>
 		<property name="description" value="Investment Example 3 description"/>
 		<property name="amount" value="2 €"/>

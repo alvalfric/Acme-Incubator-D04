@@ -14,7 +14,7 @@ public class Dashboard implements Serializable {
 
 	private static final long	serialVersionUID	= 1L;
 
-	//D01
+	//D02
 	int							totalNumberOfNotices;
 	int							totalNumberOfTechnologyRecords;
 	int							totalNumberOfToolRecords;
@@ -32,4 +32,11 @@ public class Dashboard implements Serializable {
 	String[][]					totalNumberOfToolsGroupedByActivitySector;
 	double						ratioOfOpenSourceToolsVSClosedSourceTools;
 	List<List<String>>			chartTechnologyTool;
+
+	//D04
+	double						averageNumberOfInvestmentRoundPerEntrepeneur;
+	double						averageNumberOfApplicationsPerEntrepeneur;
+	double						averageNumberOfApplicationsPerInvestor;
+
+	List<List<String>>			chartInvestmentApplications;
 }

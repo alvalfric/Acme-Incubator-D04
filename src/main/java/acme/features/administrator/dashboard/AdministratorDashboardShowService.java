@@ -2,6 +2,7 @@
 package acme.features.administrator.dashboard;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.TreeSet;
@@ -38,7 +39,8 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 
 		request.unbind(entity, model, "totalNumberOfNotices", "totalNumberOfTechnologyRecords", "totalNumberOfToolRecords", "minimumMoneyIntervalsOfActiveInquiries", "maximunMoneyIntervalsOfActiveInquiries", "averageMoneyIntervalsOfActiveInquiries",
 			"standardDeviationMoneyIntervalsOfActiveInquiries", "minimumMoneyIntervalsOfActiveOvertures", "maximunMoneyIntervalsOfActiveOvertures", "averageMoneyIntervalsOfActiveOvertures", "standardDeviationMoneyIntervalsOfActiveOvertures",
-			"ratioOfOpenSourceTechnologiesVSClosedSourceTechnologies", "ratioOfOpenSourceToolsVSClosedSourceTools", "chartTechnologyTool");
+			"ratioOfOpenSourceTechnologiesVSClosedSourceTechnologies", "ratioOfOpenSourceToolsVSClosedSourceTools", "chartTechnologyTool", "averageNumberOfInvestmentRoundPerEntrepeneur", "averageNumberOfApplicationsPerEntrepeneur",
+			"averageNumberOfApplicationsPerInvestor", "chartInvestmentApplications");
 	}
 
 	@Override
@@ -47,7 +49,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 
 		Dashboard result = new Dashboard();
 
-		//D01
+		//D02
 		result.setTotalNumberOfNotices(this.repository.totalNumberOfNotices());
 		result.setTotalNumberOfTechnologyRecords(this.repository.totalNumberOfTechnologyRecords());
 		result.setTotalNumberOfToolRecords(this.repository.totalNumberOfToolRecords());
@@ -98,6 +100,11 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setRatioOfOpenSourceToolsVSClosedSourceTools(this.repository.ratioOfOpenSourceToolsVSClosedSourceTools());
 		result.setChartTechnologyTool(this.generateChartTechnologyTools());
 
+		//D04
+		result.setAverageNumberOfInvestmentRoundPerEntrepeneur(this.repository.averageNumberOfInvestmentRoundPerEntrepeneur());
+		result.setAverageNumberOfApplicationsPerEntrepeneur(this.repository.averageNumberOfApplicationsPerEntrepeneur());
+		result.setAverageNumberOfApplicationsPerInvestor(this.repository.averageNumberOfApplicationsPerInvestor());
+		result.setChartInvestmentApplications(this.generateChartInvestmentApplication());
 		return result;
 	}
 
@@ -162,4 +169,41 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		return chart;
 	}
 
+	private List<List<String>> generateChartInvestmentApplication() {
+		List<List<String>> chart = new ArrayList<>();
+
+		Collection<String> labels_investment = new TreeSet<>(Arrays.asList("SEED", "ANGEL", "SERIES-A", "SERIES-B", "SERIES-C", "BRIDGE"));
+		List<String> data_investment = new ArrayList<>(Arrays.asList("0", "0", "0", "0", "0", "0"));
+
+		for (int i = 0; i < labels_investment.size(); i++) {
+			List<String> labelsList = new ArrayList<>(labels_investment);
+
+			for (String[] cr : this.repository.ratioOfInvestmentRoundGroupedByKind()) {
+				if (labelsList.get(i).equals(cr[0])) {
+					data_investment.set(i, cr[1]);
+				}
+			}
+		}
+
+		chart.add(new ArrayList<>(labels_investment));
+		chart.add(data_investment);
+
+		Collection<String> labels_application = new TreeSet<>(Arrays.asList("PENDING", "ACCEPTED", "REJECTED"));
+		List<String> data_application = new ArrayList<>(Arrays.asList("0", "0", "0"));
+
+		for (int i = 0; i < labels_application.size(); i++) {
+			List<String> labelsList = new ArrayList<>(labels_application);
+
+			for (String[] cr : this.repository.ratioOfApplicationsRoundGroupedByStatus()) {
+				if (labelsList.get(i).toLowerCase().equals(cr[0])) {
+					data_application.set(i, cr[1]);
+				}
+			}
+		}
+
+		chart.add(new ArrayList<>(labels_application));
+		chart.add(data_application);
+
+		return chart;
+	}
 }

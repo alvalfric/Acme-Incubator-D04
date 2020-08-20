@@ -7,6 +7,7 @@ import acme.framework.repositories.AbstractRepository;
 
 public interface AdministratorDashboardRepository extends AbstractRepository {
 
+	//D02
 	@Query("select count(n) from Notice n")
 	int totalNumberOfNotices();
 
@@ -59,4 +60,20 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 
 	@Query("select (count(t)*1.0)/(select count(tt)*1.0 from ToolRecord tt where tt.sourceType = 'Closed-Source') from ToolRecord t where t.sourceType = 'Open-Source'")
 	double ratioOfOpenSourceToolsVSClosedSourceTools();
+
+	//D04
+	@Query("select count(i)*1.0/(select count(distinct ii.entrepeneur) from InvestmentRound ii) from InvestmentRound i")
+	double averageNumberOfInvestmentRoundPerEntrepeneur();
+
+	@Query("select count(a)*1.0/(select count(distinct ii.entrepeneur) from InvestmentRound ii) from Application a ")
+	double averageNumberOfApplicationsPerEntrepeneur();
+
+	@Query("select count(a)*1.0/(select count(distinct aa.investor) from Application aa) from Application a ")
+	double averageNumberOfApplicationsPerInvestor();
+
+	@Query("select i.round, count(i)*1.0/(select count(ii) from InvestmentRound ii) from InvestmentRound i group by i.round")
+	String[][] ratioOfInvestmentRoundGroupedByKind();
+
+	@Query("select a.status, count(a)*1.0/(select count(aa) from Application aa) from Application a group by a.status")
+	String[][] ratioOfApplicationsRoundGroupedByStatus();
 }

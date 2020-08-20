@@ -17,10 +17,10 @@
 	<acme:form-textbox code="administrator.dashboard.label.standardDeviationMoneyIntervalsOfActiveOvertures" path="standardDeviationMoneyIntervalsOfActiveOvertures" />
 
 <b><acme:message code="administrator.dashboard.chart.label.technologyTool"/></b>
-<canvas id="myChart" width="250" height="50"></canvas>
+<canvas id="chartTechnologyTool" width="250" height="50"></canvas>
 <script>
-	var ctx = document.getElementById("myChart").getContext('2d');
-	var myChart = new Chart(ctx, {
+	var ctx = document.getElementById("chartTechnologyTool").getContext('2d');
+	var chartTechnologyTool = new Chart(ctx, {
 		type : 'bar',
 		data : {
 			labels : [
@@ -67,6 +67,87 @@
 					}
 				]
 			},
+			legend : {
+				display : true
+			}
+		}
+	});
+</script>
+	<acme:form-textbox code="administrator.dashboard.label.averageNumberOfInvestmentRoundPerEntrepeneur" path="averageNumberOfInvestmentRoundPerEntrepeneur" />
+	<acme:form-textbox code="administrator.dashboard.label.averageNumberOfApplicationsPerEntrepeneur" path="averageNumberOfApplicationsPerEntrepeneur" />
+	<acme:form-textbox code="administrator.dashboard.label.averageNumberOfApplicationsPerInvestor" path="averageNumberOfApplicationsPerInvestor" />
+
+<b><acme:message code="administrator.dashboard.chart.label.chartInvestment"/></b>
+<canvas id="chartInvestmentApplication" width="250" height="50"></canvas>
+<b><acme:message code="administrator.dashboard.chart.label.chartApplication"/></b>
+<canvas id="chartApplication" width="250" height="50"></canvas>
+<script>
+	var ctx = document.getElementById("chartInvestmentApplication").getContext('2d');
+	var chartInvestmentApplication = new Chart(ctx, {
+		type : 'pie',
+		data : {
+			labels : [
+				"<jstl:out value="${chartInvestmentApplications.get(0).get(0)}" escapeXml="false"/>",
+				<jstl:forEach var="label" items="${chartInvestmentApplications.get(0)}" begin="1">
+					"<jstl:out value="${label}" escapeXml="false"/>",
+				</jstl:forEach>
+			],
+			datasets : [
+				{
+					data : [
+						<jstl:out value="${Double.parseDouble(chartInvestmentApplications.get(1).get(0))}" escapeXml="false"/>
+						<jstl:forEach var="investment" items="${chartInvestmentApplications.get(1)}" begin="1">
+							,<jstl:out value="${Double.parseDouble(investment)}" escapeXml="false"/>
+						</jstl:forEach>
+					],
+					label: 'Investment Rounds/Registros de Inversión',
+					backgroundColor : [
+						'rgba(255, 99, 132)',
+						'rgba(255, 175, 132)',
+						'rgba(255, 252, 132)',
+						'rgba(175, 252, 132)',
+						'rgba(99, 252, 132)',
+						'rgba(99, 252, 252)'
+					]		
+				}
+			]
+		},
+		options : {
+			legend : {
+				display : true
+			}
+		}
+	});
+</script>
+<script>
+	var ctx = document.getElementById("chartApplication").getContext('2d');
+	var chartApplication = new Chart(ctx, {
+		type : 'pie',
+		data : {
+			labels : [
+				"<jstl:out value="${chartInvestmentApplications.get(2).get(0)}" escapeXml="false"/>",
+				<jstl:forEach var="label" items="${chartInvestmentApplications.get(2)}" begin="1">
+					"<jstl:out value="${label}" escapeXml="false"/>",
+				</jstl:forEach>
+			],
+			datasets : [
+				{
+					data : [
+						<jstl:out value="${Double.parseDouble(chartInvestmentApplications.get(3).get(0))}" escapeXml="false"/>
+						<jstl:forEach var="investment" items="${chartInvestmentApplications.get(3)}" begin="1">
+							,<jstl:out value="${Double.parseDouble(investment)}" escapeXml="false"/>
+						</jstl:forEach>
+					],
+					label: 'Applications/Aplicaciones',
+					backgroundColor : [
+						'rgba(99, 252, 132)',
+						'rgba(224, 224, 224)',
+						'rgba(255, 99, 132)'
+					]		
+				}
+			]
+		},
+		options : {
 			legend : {
 				display : true
 			}
