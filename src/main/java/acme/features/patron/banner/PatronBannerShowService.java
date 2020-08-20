@@ -1,27 +1,29 @@
 
-package acme.features.administrator.banner;
+package acme.features.patron.banner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.banners.Banner;
+import acme.entities.roles.Patron;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.entities.Administrator;
 import acme.framework.services.AbstractShowService;
 
 @Service
-public class AdministratorBannerShowService implements AbstractShowService<Administrator, Banner> {
+public class PatronBannerShowService implements AbstractShowService<Patron, Banner> {
 
 	@Autowired
-	private AdministratorBannerRepository repository;
+	private PatronBannerRepository repository;
 
 
 	@Override
 	public boolean authorise(final Request<Banner> request) {
 		assert request != null;
 
-		return true;
+		Banner banner = this.repository.findOneById(request.getModel().getInteger("id"));
+
+		return banner.getPatron().getUserAccount().getId() == request.getPrincipal().getAccountId();
 	}
 
 	@Override
@@ -30,7 +32,7 @@ public class AdministratorBannerShowService implements AbstractShowService<Admin
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "picture", "slogan", "url", "holderName", "number", "brand", "expirationDate", "CVV");
+		request.unbind(entity, model, "picture", "slogan", "url");
 	}
 
 	@Override

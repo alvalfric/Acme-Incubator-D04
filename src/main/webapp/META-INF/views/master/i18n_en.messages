@@ -48,8 +48,6 @@ master.menu.administrator.shutdown = Shut down
 
 master.menu.administrator.customization-parameter.show = Show Customization Parameters
 master.menu.administrator.dashboard.show = Show Dashboard
-master.menu.administrator.banner.list = List Banners
-master.menu.administrator.banner.create = Create Banner
 
 master.menu.administrator.notice.create = Create Notice
 master.menu.administrator.notice.list = List Notices
@@ -97,11 +95,16 @@ master.menu.entrepeneur.application.list = List Investment Rounds' Applications
 master.menu.investor = Investor
 master.menu.investor.application.list = List Applications
 
-# master.menu.bookkeeper ########################################################
+# master.menu.bookkeeper ######################################################
 
 master.menu.bookkeeper = Bookkeeper
 master.menu.bookkeeper.investment-round.list.written = List Investment Rounds With Account Record
 master.menu.bookkeeper.investment-round.list.not-written = List Investment Rounds Without Account Record
+
+# master.menu.patron ##########################################################
+
+master.menu.patron.banner.list = List Banners
+master.menu.patron.banner.create = Create Banner
 
 # master.menu.user-account ####################################################
 

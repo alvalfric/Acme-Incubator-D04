@@ -38,9 +38,6 @@
 			<acme:menu-suboption code="master.menu.administrator.customization-parameter.show" action="/administrator/customization-parameter/show"/>
 			<acme:menu-suboption code="master.menu.administrator.dashboard.show" action="/administrator/dashboard/show"/>
 			<acme:menu-separator/>
-			<acme:menu-suboption code="master.menu.administrator.banner.list" action="/administrator/banner/list"/>		
-			<acme:menu-suboption code="master.menu.administrator.banner.create" action="/administrator/banner/create"/>		
-			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.inquirie.list" action="/administrator/inquirie/list"/>		
 			<acme:menu-suboption code="master.menu.administrator.overture.list" action="/administrator/overture/list"/>		
 			<acme:menu-suboption code="master.menu.administrator.technology-record.list" action="/administrator/technology-record/list"/>		
@@ -83,6 +80,10 @@
 	
 		<acme:menu-option code="master.menu.investor" access="hasRole('Investor')">
 		    <acme:menu-suboption code="master.menu.investor.application.list" action="/investor/application/list"/>
+		</acme:menu-option>
+
+		<acme:menu-option code="master.menu.patron" access="hasRole('Patron')">
+		    <acme:menu-suboption code="master.menu.patron.banner.list" action="/patron/banner/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.bookkeeper" access="hasRole('Bookkeeper')">

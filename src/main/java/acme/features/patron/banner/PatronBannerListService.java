@@ -1,5 +1,5 @@
 
-package acme.features.administrator.banner;
+package acme.features.patron.banner;
 
 import java.util.Collection;
 
@@ -7,16 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.banners.Banner;
+import acme.entities.roles.Patron;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.entities.Administrator;
 import acme.framework.services.AbstractListService;
 
 @Service
-public class AdministratorBannerListService implements AbstractListService<Administrator, Banner> {
+public class PatronBannerListService implements AbstractListService<Patron, Banner> {
 
 	@Autowired
-	private AdministratorBannerRepository repository;
+	private PatronBannerRepository repository;
 
 
 	@Override
@@ -41,7 +41,7 @@ public class AdministratorBannerListService implements AbstractListService<Admin
 
 		Collection<Banner> result;
 
-		result = this.repository.findManyAll();
+		result = this.repository.findManyAllByPatron(request.getPrincipal().getAccountId());
 
 		return result;
 	}
