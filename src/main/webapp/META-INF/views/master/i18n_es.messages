@@ -47,6 +47,7 @@ master.menu.administrator.user-accounts = Cuentas de usuario
 master.menu.administrator.shutdown = Parar el sistema
 
 master.menu.administrator.customization-parameter.show = Ver Parámetros de Customización
+master.menu.administrator.dashboard.show = Ver Dashboard
 
 master.menu.administrator.notice.create = Crear Noticia
 master.menu.administrator.notice.list = Listar Noticias
@@ -99,6 +100,11 @@ master.menu.investor.application.list = Listar solicitudes
 master.menu.bookkeeper = Contable
 master.menu.bookkeeper.investment-round.list.written = Listar Rondas de Inversión Con Registro Contable
 master.menu.bookkeeper.investment-round.list.not-written = Listar Rondas de Inversión Sin Registro Contable
+
+# master.menu.patron ##########################################################
+
+master.menu.patron.banner.list = Listar Banners
+master.menu.patron.banner.create = Crear Banner
 
 # master.menu.user-account ####################################################
 

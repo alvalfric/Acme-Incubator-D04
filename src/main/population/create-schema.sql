@@ -68,6 +68,16 @@
         primary key (`id`)
     ) engine=InnoDB;
 
+    create table `banner` (
+       `id` integer not null,
+        `version` integer not null,
+        `picture` varchar(255),
+        `slogan` varchar(255),
+        `url` varchar(255),
+        `patron_id` integer not null,
+        primary key (`id`)
+    ) engine=InnoDB;
+
     create table `bookkeeper` (
        `id` integer not null,
         `version` integer not null,
@@ -101,9 +111,21 @@
         primary key (`id`)
     ) engine=InnoDB;
 
+    create table `credit_card` (
+       `id` integer not null,
+        `version` integer not null,
+        `cvv` varchar(255),
+        `brand` varchar(255),
+        `expiration_date` varchar(255),
+        `holder_name` varchar(255),
+        `number` varchar(255),
+        primary key (`id`)
+    ) engine=InnoDB;
+
     create table `customization_parameter` (
        `id` integer not null,
         `version` integer not null,
+        `activity_sectors` varchar(255),
         `spam_threshold` double precision,
         `spam_words_english` varchar(255),
         `spam_words_spanish` varchar(255),
@@ -211,6 +233,15 @@
         `min_money_amount` double precision,
         `min_money_currency` varchar(255),
         `title` varchar(255),
+        primary key (`id`)
+    ) engine=InnoDB;
+
+    create table `patron` (
+       `id` integer not null,
+        `version` integer not null,
+        `user_account_id` integer,
+        `organization_name` varchar(255),
+        `credit_card_id` integer,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -334,6 +365,11 @@ create index IDX3ianip0mmnj1316lpeas2yw71 on `overture` (`deadline`);
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
 
+    alter table `banner` 
+       add constraint `FKdocr1jjfgwx9ef5jbf675l360` 
+       foreign key (`patron_id`) 
+       references `patron` (`id`);
+
     alter table `bookkeeper` 
        add constraint FK_krvjp9eaqyapewl2igugbo9o8 
        foreign key (`user_account_id`) 
@@ -381,6 +417,16 @@ create index IDX3ianip0mmnj1316lpeas2yw71 on `overture` (`deadline`);
 
     alter table `investor` 
        add constraint FK_dcek5rr514s3rww0yy57vvnpq 
+       foreign key (`user_account_id`) 
+       references `user_account` (`id`);
+
+    alter table `patron` 
+       add constraint `FKpj4cod0bcxwxg4nqv4f2xkikg` 
+       foreign key (`credit_card_id`) 
+       references `credit_card` (`id`);
+
+    alter table `patron` 
+       add constraint FK_8xx5nujhuio3advxc2freyu65 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
 
