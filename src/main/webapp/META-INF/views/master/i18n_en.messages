@@ -103,6 +103,7 @@ master.menu.bookkeeper.investment-round.list.not-written = List Investment Round
 
 # master.menu.patron ##########################################################
 
+master.menu.patron = Patron
 master.menu.patron.banner.list = List Banners
 master.menu.patron.banner.create = Create Banner
 
