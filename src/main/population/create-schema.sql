@@ -308,6 +308,12 @@
     ) engine=InnoDB;
 
     insert into `hibernate_sequence` values ( 1 );
+create index IDXhwforwdu8n1h9l7gxea3vxdvj on `accounting_record` (`status`);
+create index IDXdu3qaieu50wytnu5lea8t541n on `activity` (`deadline`);
+create index IDXj1shjic6mip5nyik4ywhvxiid on `application` (`ticker`);
+create index IDX6fmsp547p4ql4cgit2hk0uxjs on `application` (`creation`);
+create index IDX2q2747fhp099wkn3j2yt05fhs on `application` (`status`);
+create index IDX10c2k01odt8d2vthipc068j94 on `application` (`creation`, `status`);
 create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
 
     alter table `forum` 
@@ -319,8 +325,14 @@ create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
     alter table `forum_authenticated` 
        add constraint UK_k6ndg4ome2baofqo7cwvnkyln unique (`users_id`);
 create index IDXdvftjmbbmrad2oe19yi4uuhyi on `inquirie` (`deadline`);
+create index IDX9tsve2s3eqtxjjxxoqql2ul81 on `investment_round` (`ticker`);
+create index IDX1gmmruvw8xsef2jwmvvk7rj7m on `investment_round` (`round`);
 create index IDXrcpel5hblr62lfjr9gmpk2wgi on `notice` (`deadline`);
 create index IDX3ianip0mmnj1316lpeas2yw71 on `overture` (`deadline`);
+create index IDXr7lyttb4bnfd85oud954xkpx7 on `technology_record` (`activity_sector`);
+create index IDX3quagoxmgxpw6riak6uc2t4fl on `technology_record` (`source_type`);
+create index IDX7rwm294nfcoq797e0l99lux40 on `tool_record` (`activity_sector`);
+create index IDXmrlp46pw8xg8jirj2sar9l5c0 on `tool_record` (`source_type`);
 
     alter table `user_account` 
        add constraint UK_castjbvpeeus0r8lbpehiu0e4 unique (`username`);
