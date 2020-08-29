@@ -3,6 +3,7 @@ package acme.entities.forums;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -10,6 +11,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
+
+import org.hibernate.validator.constraints.Length;
 
 import acme.framework.entities.Authenticated;
 import acme.framework.entities.DomainEntity;
@@ -23,6 +26,8 @@ public class ForumMessage extends DomainEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
+	@Column(length = 256)
+	@Length(max = 256)
 	@NotBlank
 	private String				title;
 
@@ -30,9 +35,13 @@ public class ForumMessage extends DomainEntity {
 	@PastOrPresent
 	private Date				creation;
 
+	@Column(length = 1024)
+	@Length(max = 1024)
 	private String				tags;
 
 	@NotBlank
+	@Column(length = 4096)
+	@Length(max = 4096)
 	private String				body;
 
 	@NotNull

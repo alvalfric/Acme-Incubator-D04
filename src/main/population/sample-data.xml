@@ -436,6 +436,16 @@
 		<property name="investor" ref="investor1Investor"/>
 	</bean>
 	
+	<bean id="application02" class="acme.entities.investmentRounds.Application">
+		<property name="ticker" value="SXX-20-000001"/>
+		<property name="creation" value="2020/08/29 00:00"/>
+		<property name="statement" value="Example statement"/>
+		<property name="offer" value="2000 €"/>
+		<property name="status" value="pending"/>
+		<property name="investmentRound" ref="investment03"/>
+		<property name="investor" ref="investor1Investor"/>
+	</bean>
+	
 	<!-- Bookkeepers -->
 	<bean name="bookkeepers1UserAccount" class="acme.framework.entities.UserAccount">
  		<property name="username" value="bookkeeper1"/>
