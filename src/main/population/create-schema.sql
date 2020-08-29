@@ -321,9 +321,6 @@ create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
 
     alter table `forum_message` 
        add constraint UK_byxkuonx9sv7tgfm9gpwqpfl3 unique (`user_id`);
-
-    alter table `forum_authenticated` 
-       add constraint UK_k6ndg4ome2baofqo7cwvnkyln unique (`users_id`);
 create index IDXdvftjmbbmrad2oe19yi4uuhyi on `inquirie` (`deadline`);
 create index IDX9tsve2s3eqtxjjxxoqql2ul81 on `investment_round` (`ticker`);
 create index IDX1gmmruvw8xsef2jwmvvk7rj7m on `investment_round` (`round`);

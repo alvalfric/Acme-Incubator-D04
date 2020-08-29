@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
@@ -41,7 +42,7 @@ public class Forum extends DomainEntity {
 	private InvestmentRound						investmentRound;
 
 	@NotNull
-	@OneToMany
+	@ManyToMany
 	private Collection<@Valid Authenticated>	users;
 
 }
