@@ -3,6 +3,7 @@ package acme.entities.investmentRounds;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -73,7 +74,7 @@ public class InvestmentRound extends DomainEntity {
 
 	//@NotNull
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "investmentRound")
-	private Collection<@Valid Activity>			workProgramme;
+	private Set<@Valid Activity>				workProgramme;
 
 	@OneToMany(mappedBy = "investmentRound")
 	private Collection<@Valid Application>		application;

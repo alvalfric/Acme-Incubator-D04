@@ -25,12 +25,7 @@ public class EntrepeneurApplicationShowService implements AbstractShowService<En
 		Application application = this.repository.findOneById(request.getModel().getInteger("id"));
 		Principal principal = request.getPrincipal();
 
-		System.out.println(application.getInvestmentRound().getEntrepeneur().getUserAccount().getId());
-		System.out.println(request.getPrincipal().getAccountId());
-
 		boolean result = principal.getAccountId() == application.getInvestmentRound().getEntrepeneur().getUserAccount().getId();
-
-		System.out.println(result);
 
 		return result;
 	}

@@ -31,7 +31,7 @@ tr:nth-child(even) {
 	</jstl:if>
 
 	<b><acme:message code="authenticated.investment-round.form.label.workProgramme"/></b>
-	</br>
+	<br>
 	<table>
 		<tr>
 			<th><acme:message code="authenticated.investment-round.form.label.workProgramme.title"/></th>
